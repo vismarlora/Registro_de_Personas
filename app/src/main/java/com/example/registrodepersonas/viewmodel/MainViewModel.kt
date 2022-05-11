@@ -14,19 +14,20 @@ class MainViewModel:ViewModel() {
     val personalList = MutableLiveData<List<Personal>>()
     var parametroBusqueda = MutableLiveData<String>()
 
-    fun iniciar(){
+    fun iniciar() {
         viewModelScope.launch {
-            personalList.value = withContext(Dispatchers.IO){
-                db.personalDao().insert(arrayListOf<Personal>(
-                    Personal(0,"Vismar","20,000"),
-                    Personal(0,"Juan","25,000")
-                ))
+            personalList.value = withContext(Dispatchers.IO) {
+//                db.personalDao().insert(arrayListOf<Personal>(
+//                   Personal(0,"Vismar","vismar@lora",0,"1500"),
+//                    Personal(0,"Juan","juan@perez",0,"2000")
+//                ))
+
 
                 db.personalDao().getAll()
             }
 
-            for(personal in personalList.value!!){
-                Log.d("mensaje","id${personal.idPersona}, nombre ${personal.nombre}")
+            for (personal in personalList.value!!) {
+                Log.d("mensaje", "id${personal.idPersona}, nombre ${personal.nombre}")
 
             }
         }

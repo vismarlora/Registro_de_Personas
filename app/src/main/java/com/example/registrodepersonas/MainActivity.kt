@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //TODO ENLAZAR EL MODELO CON LIVE DATA
+
         viewModel = ViewModelProvider(this).get()
         viewModel.iniciar()
     }

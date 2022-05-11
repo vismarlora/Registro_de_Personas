@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Registro de Personas</string>
+    <string name="buscar_personal">Buscar Personal</string>
 </resources>
