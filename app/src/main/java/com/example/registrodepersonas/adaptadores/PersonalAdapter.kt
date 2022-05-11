@@ -32,8 +32,13 @@ class PersonalAdapter(private val dataSet: List<Personal>?) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var binding :ItemListBinding = ItemListBinding.bind(view)
         var contexto : Context = view.context
-        fun enlazarItem(personal: Personal) {
-            //todo enlazar elementos
+        fun enlazarItem(p: Personal) {
+            binding.tvNombre.text = "${p.nombre}"
+            binding.tvEmail.text = p.email
+            binding.tvOcupacion.text = p.idOcupacion.toString()
+            binding.tvSalario.text = p.salario
+
+            //todo evento on click
         }
 
     }

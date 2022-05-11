@@ -10,5 +10,5 @@ data class Personal (
     val nombre:String,
     val email:String,
     val idOcupacion: Int,
-    val balance:String
+    val salario:String
         )
