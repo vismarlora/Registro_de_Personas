@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.registrodepersonas.databinding.ActivityMainBinding
 import com.example.registrodepersonas.viewmodel.MainViewModel
 
@@ -19,5 +20,9 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get()
         viewModel.iniciar()
+
+        binding.miRecycler.apply {
+            layoutManager = LinearLayoutManager(applicationContext)
+        }
     }
 }
