@@ -29,9 +29,6 @@ class FormularioViewModel: ViewModel() {
 
         when(operacion){
             Constantes.OPERACION_INSERTAR->{
-//                //todo logica para insertar en la bd
-//                Log.d("mensaje","nombre ${nombre.value}")
-//                Log.d("mensaje","email ${email.value}")
 
                 viewModelScope.launch {
                     val result = withContext(Dispatchers.IO){
@@ -43,7 +40,6 @@ class FormularioViewModel: ViewModel() {
                     }
                     operacionExitosa.value = result.isNotEmpty()
                 }
-
             }
             Constantes.OPERACION_EDITAR->{
 
