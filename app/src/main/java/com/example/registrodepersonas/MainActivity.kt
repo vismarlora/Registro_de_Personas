@@ -2,9 +2,11 @@ package com.example.registrodepersonas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.registrodepersonas.adaptadores.PersonalAdapter
 import com.example.registrodepersonas.databinding.ActivityMainBinding
 import com.example.registrodepersonas.viewmodel.MainViewModel
 
@@ -24,5 +26,9 @@ class MainActivity : AppCompatActivity() {
         binding.miRecycler.apply {
             layoutManager = LinearLayoutManager(applicationContext)
         }
+
+        viewModel.personalList.observe(this, Observer {
+            binding.miRecycler.adapter = PersonalAdapter(it)
+        })
     }
 }
