@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.registrodepersonas.adaptadores.PersonalAdapter
+import com.example.registrodepersonas.config.Constantes
 import com.example.registrodepersonas.databinding.ActivityMainBinding
 import com.example.registrodepersonas.ui.FormularioActivity
 import com.example.registrodepersonas.viewmodel.MainViewModel
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnAbrirFormulario.setOnClickListener {
             val intent = Intent(this,FormularioActivity::class.java)
+            intent.putExtra(Constantes.OPERACION_KEY,Constantes.OPERACION_INSERTAR)
             startActivity(intent)
         }
     }
