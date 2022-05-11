@@ -25,11 +25,6 @@ class MainViewModel:ViewModel() {
 
                 db.personalDao().getAll()
             }
-
-            for (personal in personalList.value!!) {
-                Log.d("mensaje", "id${personal.idPersona}, nombre ${personal.nombre}")
-
-            }
         }
     }
 }
