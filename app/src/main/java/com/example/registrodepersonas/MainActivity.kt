@@ -1,5 +1,6 @@
 package com.example.registrodepersonas
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -8,6 +9,7 @@ import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.registrodepersonas.adaptadores.PersonalAdapter
 import com.example.registrodepersonas.databinding.ActivityMainBinding
+import com.example.registrodepersonas.ui.FormularioActivity
 import com.example.registrodepersonas.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -30,5 +32,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.personalList.observe(this, Observer {
             binding.miRecycler.adapter = PersonalAdapter(it)
         })
+
+        binding.btnAbrirFormulario.setOnClickListener {
+            val intent = Intent(this,FormularioActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
