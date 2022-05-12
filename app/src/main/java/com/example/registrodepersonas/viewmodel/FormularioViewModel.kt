@@ -25,59 +25,61 @@ class FormularioViewModel: ViewModel() {
     }
 
     fun guardarPersona(){
-        if (validarInformacion()){
-            var mPersonal = Personal(0, nombre.value!!,email.value!!,idOcupacion.value!!,salario.value!!)
+//        if (validarInformacion()){
+//
+//        }else{
+//            operacionExitosa.value = false
+//        }
 
-            when(operacion){
-                Constantes.OPERACION_INSERTAR->{
+        var mPersonal = Personal(0, nombre.value!!,email.value!!,idOcupacion.value!!,salario.value!!)
 
-                    viewModelScope.launch {
-                        val result = withContext(Dispatchers.IO){
-                            db.personalDao().insert(
-                                arrayListOf<Personal>(
-                                    mPersonal
-                                )
+        when(operacion){
+            Constantes.OPERACION_INSERTAR->{
+
+                viewModelScope.launch {
+                    val result = withContext(Dispatchers.IO){
+                        db.personalDao().insert(
+                            arrayListOf<Personal>(
+                                mPersonal
                             )
-                        }
-                        operacionExitosa.value = result.isNotEmpty()
+                        )
                     }
-                }
-                Constantes.OPERACION_EDITAR->{
-                    mPersonal.idPersona = id.value!!
-                    viewModelScope.launch {
-                        val result = withContext(Dispatchers.IO){
-                            db.personalDao().update(mPersonal)
-                        }
-
-                        operacionExitosa.value = (result>0)
-                    }
+                    operacionExitosa.value = result.isNotEmpty()
                 }
             }
-        }else{
-            operacionExitosa.value = false
+//            Constantes.OPERACION_EDITAR->{
+//                mPersonal.idPersona = id.value!!
+//                viewModelScope.launch {
+//                    val result = withContext(Dispatchers.IO){
+//                        db.personalDao().update(mPersonal)
+//                    }
+//
+//                    operacionExitosa.value = (result>0)
+//                }
+//            }
         }
 
     }
 
-    fun cargarDatos() {
-        viewModelScope.launch{
-            var persona = withContext(Dispatchers.IO){
-                db.personalDao().getById(id.value!!)
-            }
+//    fun cargarDatos() {
+//        viewModelScope.launch{
+//            var persona = withContext(Dispatchers.IO){
+//                db.personalDao().getById(id.value!!)
+//            }
+//
+//            nombre.value = persona.nombre
+//            email.value = persona.email
+//            idOcupacion.value = persona.idOcupacion
+//            salario.value = persona.salario
+//        }
+//    }
 
-            nombre.value = persona.nombre
-            email.value = persona.email
-            idOcupacion.value = persona.idOcupacion
-            salario.value = persona.salario
-        }
-    }
-
-    private fun validarInformacion():Boolean{
-        return  !(nombre.value.isNullOrEmpty() ||
-                email.value.isNullOrEmpty() ||
-                idOcupacion.value!! <= 0 || idOcupacion.value!! >= 100 ||
-                salario.value.isNullOrEmpty()
-
-                )
-    }
+//    private fun validarInformacion():Boolean{
+//        return  !(nombre.value.isNullOrEmpty() ||
+//                email.value.isNullOrEmpty() ||
+//                idOcupacion.value!! <= 0 || idOcupacion.value!! >= 100 ||
+//                salario.value.isNullOrEmpty()
+//
+//                )
+//    }
 }

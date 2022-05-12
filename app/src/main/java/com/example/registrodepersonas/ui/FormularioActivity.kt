@@ -38,7 +38,7 @@ class FormularioActivity : AppCompatActivity() {
 
         if(viewModel.operacion.equals(Constantes.OPERACION_EDITAR)){
             viewModel.id.value = intent.getLongExtra(Constantes.ID_PERSONAL_KEY,0)
-            viewModel.cargarDatos()
+//            viewModel.cargarDatos()
             binding.linearEditar.visibility = View.VISIBLE
             binding.btnGuardar.visibility = View.GONE
         }else{
