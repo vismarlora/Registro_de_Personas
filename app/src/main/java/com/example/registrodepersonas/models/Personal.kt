@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class Personal (
     @PrimaryKey(autoGenerate = true)
     var idPersona: Long,
-    val nombre:String,
-    val email:String,
-    val idOcupacion: Long,
-    val salario:String
+    var nombre:String,
+    var email:String,
+    var idOcupacion: Long,
+    var salario:String
         )
