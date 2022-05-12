@@ -1,13 +1,16 @@
 package com.example.registrodepersonas.adaptadores
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.registrodepersonas.R
+import com.example.registrodepersonas.config.Constantes
 import com.example.registrodepersonas.databinding.ItemListBinding
 import com.example.registrodepersonas.models.Personal
+import com.example.registrodepersonas.ui.FormularioActivity
 
 
 class PersonalAdapter(private val dataSet: List<Personal>?) :
@@ -38,7 +41,13 @@ class PersonalAdapter(private val dataSet: List<Personal>?) :
             binding.tvOcupacion.text = p.idOcupacion.toString()
             binding.tvSalario.text = p.salario
 
-            //todo evento on click
+            binding.root.setOnClickListener {
+                val intent = Intent(contexto,FormularioActivity::class.java)
+                intent.putExtra(Constantes.OPERACION_KEY,Constantes.OPERACION_INSERTAR)
+                intent.putExtra(Constantes.ID_PERSONAL_KEY,p.idPersona)
+
+                contexto.startActivity(intent)
+            }
         }
 
     }
