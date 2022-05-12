@@ -42,7 +42,7 @@ class FormularioViewModel: ViewModel() {
                 }
             }
             Constantes.OPERACION_EDITAR->{
-
+                mPersonal.idPersona = id.value!!
             }
         }
     }
