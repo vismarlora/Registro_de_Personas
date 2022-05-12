@@ -36,16 +36,16 @@ class FormularioActivity : AppCompatActivity() {
         })
     }
 
-    private fun irAlInicio() {
-        TODO("Not yet implemented")
+    private fun mostrarMensaje(s: String) {
+        Toast.makeText(applicationContext,s,Toast.LENGTH_LONG).show()
 
+    }
+
+    private fun irAlInicio() {
         val intent = Intent(applicationContext,MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
 
-    private fun mostrarMensaje(s: String) {
-        Toast.makeText(applicationContext,s,Toast.LENGTH_LONG).show()
 
-    }
 }

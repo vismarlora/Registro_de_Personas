@@ -1,6 +1,5 @@
 package com.example.registrodepersonas.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.registrodepersonas.models.Personal
 
@@ -8,6 +7,9 @@ import com.example.registrodepersonas.models.Personal
 interface PersonalDao {
     @Query("SELECT * FROM Personal")
     fun getAll(): List<Personal>
+
+    @Query("SELECT * FROM Personal WHERE idPersona = :id")
+    fun getById(id:Long):Personal
 
     @Insert
     fun insert(personas: List<Personal>):List<Long>

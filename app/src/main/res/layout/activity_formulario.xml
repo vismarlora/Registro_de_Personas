@@ -17,24 +17,26 @@
 
         <EditText
             android:id="@+id/etNombre"
-            android:hint="string/nombre"
+            android:hint="@string/nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@={modelo.nombre}"/>
+            android:text="@={modelo.nombre}"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/etEmail"
-            android:hint="string/email"
+            android:hint="@string/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etNombre"
             android:layout_marginTop="4dp"
-            android:text="@={modelo.email}"/>
+            android:text="@={modelo.email}"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/etOcupacionId"
@@ -45,7 +47,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etEmail"
             android:layout_marginTop="4dp"
-            android:text="@={``+modelo.idOcupacion}"/>
+            android:text="@={``+modelo.idOcupacion}"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/etSalario"
@@ -56,7 +59,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etOcupacionId"
             android:layout_marginTop="4dp"
-            android:text="@={modelo.salario}"/>
+            android:text="@={modelo.salario}"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/btnGuardar"
