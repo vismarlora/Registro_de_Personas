@@ -43,7 +43,7 @@ class PersonalAdapter(private val dataSet: List<Personal>?) :
 
             binding.root.setOnClickListener {
                 val intent = Intent(contexto,FormularioActivity::class.java)
-                intent.putExtra(Constantes.OPERACION_KEY,Constantes.OPERACION_INSERTAR)
+                intent.putExtra(Constantes.OPERACION_KEY,Constantes.OPERACION_EDITAR)
                 intent.putExtra(Constantes.ID_PERSONAL_KEY,p.idPersona)
 
                 contexto.startActivity(intent)
