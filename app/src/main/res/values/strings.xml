@@ -6,4 +6,5 @@
     <string name="idOcupacion">OcupacionId</string>
     <string name="salario">Salario</string>
     <string name="guardar">Guardar</string>
+    <string name="borrar">Borrar</string>
 </resources>
