@@ -3,6 +3,8 @@ package com.example.registrodepersonas
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
@@ -21,9 +23,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //TODO ENLAZAR EL MODELO CON LIVE DATA
-
         viewModel = ViewModelProvider(this).get()
+        binding.lifecycleOwner = this
+        binding.modelo = viewModel
         viewModel.iniciar()
 
         binding.miRecycler.apply {
@@ -39,5 +41,22 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(Constantes.OPERACION_KEY,Constantes.OPERACION_INSERTAR)
             startActivity(intent)
         }
+
+        binding.etBuscar.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (p0.toString().isNotEmpty()){
+                    viewModel.buscarPersona()
+                }
+            }
+
+        })
     }
 }

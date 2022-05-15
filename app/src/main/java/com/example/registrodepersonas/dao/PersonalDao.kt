@@ -11,6 +11,9 @@ interface PersonalDao {
     @Query("SELECT * FROM Personal WHERE idPersona = :id")
     fun getById(id:Long):Personal
 
+    @Query("SELECT * FROM Personal WHERE nombre LIKE '%'|| :name || '%' OR email LIKE '%'|| :name || '%'")
+    fun getByName(name:String): List<Personal>
+
     @Insert
     fun insert(personas: List<Personal>):List<Long>
 
