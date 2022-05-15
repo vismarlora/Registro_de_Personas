@@ -25,11 +25,11 @@ class FormularioViewModel: ViewModel() {
     }
 
     fun guardarPersona(){
-//        if (validarInformacion()){
-//
-//        }else{
-//            operacionExitosa.value = false
-//        }
+        if (validarInformacion()){
+
+        }else{
+            operacionExitosa.value = false
+        }
 
         var mPersonal = Personal(0, nombre.value!!,email.value!!,idOcupacion.value!!,salario.value!!)
 
@@ -47,16 +47,16 @@ class FormularioViewModel: ViewModel() {
                     operacionExitosa.value = result.isNotEmpty()
                 }
             }
-//            Constantes.OPERACION_EDITAR->{
-//                mPersonal.idPersona = id.value!!
-//                viewModelScope.launch {
-//                    val result = withContext(Dispatchers.IO){
-//                        db.personalDao().update(mPersonal)
-//                    }
-//
-//                    operacionExitosa.value = (result>0)
-//                }
-//            }
+            Constantes.OPERACION_EDITAR->{
+                mPersonal.idPersona = id.value!!
+                viewModelScope.launch {
+                    val result = withContext(Dispatchers.IO){
+                        db.personalDao().update(mPersonal)
+                    }
+
+                    operacionExitosa.value = (result>0)
+                }
+            }
         }
 
     }
@@ -74,12 +74,12 @@ class FormularioViewModel: ViewModel() {
         }
     }
 
-//    private fun validarInformacion():Boolean{
-//        return  !(nombre.value.isNullOrEmpty() ||
-//                email.value.isNullOrEmpty() ||
-//                idOcupacion.value!! <= 0 || idOcupacion.value!! >= 100 ||
-//                salario.value.isNullOrEmpty()
-//
-//                )
-//    }
+    private fun validarInformacion():Boolean{
+        return  !(nombre.value.isNullOrEmpty() ||
+                email.value.isNullOrEmpty() ||
+                idOcupacion.value!! <= 0 || idOcupacion.value!! >= 100 ||
+                salario.value.isNullOrEmpty()
+
+                )
+    }
 }
