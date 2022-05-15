@@ -26,39 +26,37 @@ class FormularioViewModel: ViewModel() {
 
     fun guardarPersona(){
         if (validarInformacion()){
+            var mPersonal = Personal(0, nombre.value!!,email.value!!,idOcupacion.value!!,salario.value!!)
+
+            when(operacion){
+                Constantes.OPERACION_INSERTAR->{
+
+                    viewModelScope.launch {
+                        val result = withContext(Dispatchers.IO){
+                            db.personalDao().insert(
+                                arrayListOf<Personal>(
+                                    mPersonal
+                                )
+                            )
+                        }
+                        operacionExitosa.value = result.isNotEmpty()
+                    }
+                }
+                Constantes.OPERACION_EDITAR->{
+                    mPersonal.idPersona = id.value!!
+                    viewModelScope.launch {
+                        val result = withContext(Dispatchers.IO){
+                            db.personalDao().update(mPersonal)
+                        }
+
+                        operacionExitosa.value = (result>0)
+                    }
+                }
+            }
 
         }else{
             operacionExitosa.value = false
         }
-
-        var mPersonal = Personal(0, nombre.value!!,email.value!!,idOcupacion.value!!,salario.value!!)
-
-        when(operacion){
-            Constantes.OPERACION_INSERTAR->{
-
-                viewModelScope.launch {
-                    val result = withContext(Dispatchers.IO){
-                        db.personalDao().insert(
-                            arrayListOf<Personal>(
-                                mPersonal
-                            )
-                        )
-                    }
-                    operacionExitosa.value = result.isNotEmpty()
-                }
-            }
-            Constantes.OPERACION_EDITAR->{
-                mPersonal.idPersona = id.value!!
-                viewModelScope.launch {
-                    val result = withContext(Dispatchers.IO){
-                        db.personalDao().update(mPersonal)
-                    }
-
-                    operacionExitosa.value = (result>0)
-                }
-            }
-        }
-
     }
 
     fun cargarDatos() {
