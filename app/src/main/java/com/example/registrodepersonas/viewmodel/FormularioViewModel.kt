@@ -80,4 +80,14 @@ class FormularioViewModel: ViewModel() {
 
                 )
     }
+
+    fun eliminarPersona() {
+        var mPersonal = Personal(id.value!!,"","",0,"")
+        viewModelScope.launch {
+            var result = withContext(Dispatchers.IO){
+                db.personalDao().delete(mPersonal)
+            }
+            operacionExitosa.value = (result>0)
+        }
+    }
 }

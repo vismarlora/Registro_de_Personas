@@ -11,16 +11,19 @@ import androidx.lifecycle.get
 import com.example.registrodepersonas.MainActivity
 import com.example.registrodepersonas.config.Constantes
 import com.example.registrodepersonas.databinding.ActivityFormularioBinding
+import com.example.registrodepersonas.dialogos.BorrarDialogo
 import com.example.registrodepersonas.viewmodel.FormularioViewModel
 
-class FormularioActivity : AppCompatActivity() {
+class FormularioActivity : AppCompatActivity(),BorrarDialogo.BorrarListener {
     private lateinit var binding:ActivityFormularioBinding
+    lateinit var dialogoBorrar:BorrarDialogo
     private lateinit var viewModel:FormularioViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormularioBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+        dialogoBorrar = BorrarDialogo(this)
 
         viewModel = ViewModelProvider(this).get()
         viewModel.operacion = intent.getStringExtra(Constantes.OPERACION_KEY)!!
@@ -46,6 +49,14 @@ class FormularioActivity : AppCompatActivity() {
             binding.btnGuardar.visibility = View.VISIBLE
 
         }
+
+        binding.btnBorrar.setOnClickListener{
+            mostrarDialogo()
+        }
+    }
+
+    private fun mostrarDialogo() {
+        dialogoBorrar.show(supportFragmentManager,"Dialogo Borrar")
     }
 
     private fun mostrarMensaje(s: String) {
@@ -57,6 +68,10 @@ class FormularioActivity : AppCompatActivity() {
         val intent = Intent(applicationContext,MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
+    }
+
+    override fun borrarPersona() {
+        viewModel.eliminarPersona()
     }
 
 
