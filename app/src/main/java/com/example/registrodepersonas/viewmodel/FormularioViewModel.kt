@@ -61,18 +61,18 @@ class FormularioViewModel: ViewModel() {
 
     }
 
-//    fun cargarDatos() {
-//        viewModelScope.launch{
-//            var persona = withContext(Dispatchers.IO){
-//                db.personalDao().getById(id.value!!)
-//            }
-//
-//            nombre.value = persona.nombre
-//            email.value = persona.email
-//            idOcupacion.value = persona.idOcupacion
-//            salario.value = persona.salario
-//        }
-//    }
+    fun cargarDatos() {
+        viewModelScope.launch{
+            var persona = withContext(Dispatchers.IO){
+                db.personalDao().getById(id.value!!)
+            }
+
+            nombre.value = persona.nombre
+            email.value = persona.email
+            idOcupacion.value = persona.idOcupacion
+            salario.value = persona.salario
+        }
+    }
 
 //    private fun validarInformacion():Boolean{
 //        return  !(nombre.value.isNullOrEmpty() ||
